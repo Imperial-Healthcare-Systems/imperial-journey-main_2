@@ -1,0 +1,158 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    @apply font-sans font-light text-ink bg-paper antialiased;
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+  img, video { @apply max-w-full block; }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; }
+
+  h1, h2, h3, h4 {
+    @apply font-sans font-semibold text-ink;
+    line-height: 1.15;
+  }
+  h2 { font-size: clamp(2rem, 4vw, 3.4rem); }
+  h3 { font-size: clamp(1.4rem, 2vw, 1.8rem); }
+  h4 { font-size: 1.1rem; font-weight: 500; }
+  p { @apply text-muted font-light; }
+
+  section[id] { scroll-margin-top: 100px; }
+}
+
+@layer components {
+  .wrap        { @apply max-w-wrap mx-auto px-8; }
+  .wrap-narrow { @apply max-w-narrow mx-auto px-8; }
+
+  .eyebrow {
+    @apply inline-block font-sans font-medium uppercase text-accent;
+    font-size: 11px;
+    letter-spacing: 0.4em;
+  }
+
+  .btn {
+    @apply inline-flex items-center gap-3 border-0 font-semibold uppercase cursor-pointer;
+    padding: 18px 38px;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .btn-primary { @apply bg-accent text-white; border-radius: 50px; }
+  .btn-primary:hover { @apply bg-accent-deep; transform: translateY(-2px); box-shadow: 0 14px 32px -8px rgba(200,164,90,0.6); }
+  .btn-outline {
+    @apply bg-transparent text-white;
+    border: 1px solid rgba(255,255,255,0.7);
+  }
+  .btn-outline:hover { @apply bg-white text-ink; border-color: #fff; }
+  .btn-dark    { @apply bg-ink text-white; border-radius: 50px; }
+  .btn-dark:hover { @apply bg-accent; transform: translateY(-2px); }
+  .btn .arrow { font-size: 14px; transition: transform 0.4s; }
+  .btn:hover .arrow { transform: translateX(5px); }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Section dark-mode helpers ===== */
+.section-dark h2,
+.section-dark h3,
+.section-dark h4 { color: #fff; }
+.section-dark p  { color: rgba(255,255,255,0.7); }
+.section-dark .section-head h2 .italic { color: var(--accent-soft, #e8d6a8); }
+
+/* ===== Moments scrollbar styling ===== */
+.moments-strip::-webkit-scrollbar { height: 6px; }
+.moments-strip::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
+.moments-strip::-webkit-scrollbar-thumb { background: #c8a45a; border-radius: 3px; }
+.moments-strip { scrollbar-width: thin; scrollbar-color: #c8a45a transparent; }
+
+/* ===== Wonder grid layout helpers ===== */
+.wonder.tall    { grid-row: span 2; }
+.wonder.wide    { grid-column: span 2; }
+.wonder.feature { grid-column: span 2; grid-row: span 2; }
+@media (max-width: 980px) {
+  .wonder.feature, .wonder.wide { grid-column: span 2; }
+  .wonder.tall { grid-row: span 1; }
+}
+@media (max-width: 540px) {
+  .wonder.feature, .wonder.wide { grid-column: span 1; }
+}
+
+/* ===== Modal ===== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  backdrop-filter: blur(8px);
+  z-index: 200;
+  overflow-y: auto;
+}
+
+/* ===== Legal page body (rendered from HTML strings) ===== */
+.legal-body p {
+  color: #7a7a7a;
+  font-size: 14.5px;
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+.legal-body ul {
+  list-style: none;
+  margin: 12px 0 16px;
+  padding: 0;
+}
+.legal-body li {
+  padding: 6px 0 6px 20px;
+  position: relative;
+  color: #7a7a7a;
+  font-size: 14.5px;
+  line-height: 1.7;
+}
+.legal-body li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: #c8a45a;
+}
+.legal-body strong {
+  color: #0d0d0d;
+  font-weight: 600;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; }
+}
+
+/* ---------- Cinematic intro ---------- */
+@keyframes ijHeroIn {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: none; }
+}
+.ij-hero-in { animation: ijHeroIn 1.4s 0.8s cubic-bezier(.2,.7,.2,1) both; }
+
+/* While the opening journey plays, hide the site chrome (top bar, header,
+   WhatsApp button…) — everything except the hero film. */
+html[data-intro="playing"] body > :not(#intro-section) {
+  opacity: 0;
+  pointer-events: none;
+}
+body > * {
+  transition: opacity 1.6s ease;
+}
