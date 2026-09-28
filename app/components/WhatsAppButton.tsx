@@ -1,16 +1,46 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
 const PHONE = "917358013585";
 const PRESET_MESSAGE =
   "Hi Imperial Journeys! I'd like to plan a trip — could you help?";
 
 export default function WhatsAppButton() {
   const href = `https://wa.me/${PHONE}?text=${encodeURIComponent(PRESET_MESSAGE)}`;
+  const [visible, setVisible] = useState(false);
+
+  // Hidden at the top (header over the hero) and once the footer is on screen;
+  // shown everywhere in between.
+  useEffect(() => {
+    const update = () => {
+      const vh = window.innerHeight;
+      const hero = document.getElementById("intro-section");
+      const footer = document.querySelector("footer");
+      const atTop = hero ? hero.getBoundingClientRect().bottom > vh * 0.35 : window.scrollY < vh * 0.65;
+      const atFooter = footer ? footer.getBoundingClientRect().top < vh : false;
+      setVisible(!atTop && !atFooter);
+    };
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, []);
+
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"
-      className="group fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full grid place-items-center transition-all duration-300 hover:scale-110 max-[600px]:bottom-4 max-[600px]:right-4"
+      aria-hidden={!visible}
+      tabIndex={visible ? 0 : -1}
+      className={`group fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full grid place-items-center transition-all duration-300 hover:scale-110 max-[600px]:bottom-4 max-[600px]:right-4 ${
+        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
+      }`}
       style={{
         background: "#25D366",
         boxShadow: "0 8px 24px -4px rgba(37,211,102,0.55)",

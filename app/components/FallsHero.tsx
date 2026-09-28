@@ -15,7 +15,7 @@ import { useEffect, useRef, useState } from "react";
 const FILM_SRC = "/intro/intro.mp4";
 const FILM_POSTER = "/intro/intro-poster.jpg";
 /** Film time (s) at which the falls are framed on the right and the content appears. */
-const REVEAL_AT = 72.3;
+const REVEAL_AT = 59.5;
 
 export default function FallsHero() {
   const videoRef = useRef<HTMLVideoElement>(null);
