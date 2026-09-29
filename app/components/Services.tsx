@@ -78,7 +78,7 @@ export default function Services() {
           </p>
         </div>
 
-        <div className="reveal grid grid-cols-3 border-t border-l border-line max-[880px]:grid-cols-2 max-[540px]:grid-cols-1">
+        <div className="reveal-stagger grid grid-cols-3 border-t border-l border-line max-[880px]:grid-cols-2 max-[540px]:grid-cols-1">
           {SERVICES.map((s) => (
             <div
               key={s.title}

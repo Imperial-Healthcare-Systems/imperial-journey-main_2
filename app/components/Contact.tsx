@@ -8,7 +8,7 @@ export default function Contact() {
     >
       <div className="wrap">
         <div className="grid gap-20 max-[880px]:grid-cols-1 max-[880px]:gap-[50px]" style={{ gridTemplateColumns: "1fr 1.2fr" }}>
-          <div className="reveal">
+          <div className="reveal-left">
             <div className="eyebrow">Get In Touch</div>
             <h2 className="font-serif font-medium mb-6 mt-4">
               Ready for your{" "}
@@ -73,7 +73,7 @@ export default function Contact() {
             </div>
           </div>
 
-          <div className="reveal bg-paper border border-line p-[50px] rounded-md max-[880px]:p-[32px_26px]">
+          <div className="reveal-right bg-paper border border-line p-[50px] rounded-md max-[880px]:p-[32px_26px]">
             <ContactForm />
           </div>
         </div>

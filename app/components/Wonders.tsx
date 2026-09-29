@@ -8,6 +8,8 @@ export default function Wonders() {
   const [active, setActive] = useState<Wonder | null>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
   const heroVideoRef = useRef<HTMLVideoElement>(null);
+  // Gallery photos that failed to load (e.g. removed from Pexels) are left out
+  const [brokenImgs, setBrokenImgs] = useState<string[]>([]);
 
   useEffect(() => {
     document.body.style.overflow = active ? "hidden" : "";
@@ -47,7 +49,7 @@ export default function Wonders() {
           </div>
 
           <div
-            className="reveal grid gap-4 grid-cols-4 max-[980px]:grid-cols-2 max-[540px]:grid-cols-1"
+            className="reveal-stagger grid gap-4 grid-cols-4 max-[980px]:grid-cols-2 max-[540px]:grid-cols-1"
             style={{ gridAutoRows: "220px" }}
           >
             {WONDERS.map((w) => {
@@ -293,7 +295,7 @@ export default function Wonders() {
                 <span className="italic text-accent">trip</span>
               </h3>
               <div className="grid grid-cols-3 gap-4 max-[880px]:grid-cols-1">
-                {active.gallery.map((g) => (
+                {active.gallery.filter((g) => !brokenImgs.includes(g.img)).map((g) => (
                   <div
                     key={g.img}
                     className="relative overflow-hidden rounded bg-ink cursor-pointer group"
@@ -305,6 +307,7 @@ export default function Wonders() {
                       fill
                       sizes="(max-width: 880px) 100vw, 33vw"
                       className="object-cover transition-transform duration-[600ms] group-hover:scale-[1.06]"
+                      onError={() => setBrokenImgs((b) => [...b, g.img])}
                     />
                     <div
                       className="absolute inset-0"

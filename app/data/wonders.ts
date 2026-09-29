@@ -26,7 +26,7 @@ export const WONDERS: Wonder[] = [
     image:
       "https://images.pexels.com/photos/210186/pexels-photo-210186.jpeg?auto=compress&cs=tinysrgb&w=1600",
     heroVideo:
-      "https://videos.pexels.com/video-files/1448735/1448735-hd_1920_1080_24fps.mp4",
+      "https://videos.pexels.com/video-files/1448735/1448735-hd_1366_720_24fps.mp4",
     tagline: "Helicopter to remote cascades few travellers ever see.",
     intro:
       "Some waterfalls you walk to. The ones we send you to, you fly into. Iceland's glacial monsters and Costa Rica's jungle veils — both with private guides, both with picnics on the kind of moss only photographers know about.",
@@ -49,7 +49,7 @@ export const WONDERS: Wonder[] = [
     image:
       "https://images.pexels.com/photos/259411/pexels-photo-259411.jpeg?auto=compress&cs=tinysrgb&w=1200",
     heroVideo:
-      "https://videos.pexels.com/video-files/2249402/2249402-uhd_3840_2160_30fps.mp4",
+      "https://videos.pexels.com/video-files/2249402/2249402-hd_1920_1080_24fps.mp4",
     tagline:
       "Luxury tented camps. Naturalist drives. Hot-air balloons over the migration.",
     intro:
@@ -96,7 +96,7 @@ export const WONDERS: Wonder[] = [
     image:
       "https://images.pexels.com/photos/1287460/pexels-photo-1287460.jpeg?auto=compress&cs=tinysrgb&w=1600",
     heroVideo:
-      "https://videos.pexels.com/video-files/4205697/4205697-uhd_3840_2160_25fps.mp4",
+      "https://videos.pexels.com/video-files/4205697/4205697-hd_1920_1080_30fps.mp4",
     tagline:
       "Iconic landmark hotels, butler-served residences, only the rooms we would stay in ourselves.",
     intro:
@@ -237,7 +237,7 @@ export const WONDERS: Wonder[] = [
     image:
       "https://images.pexels.com/photos/1486785/pexels-photo-1486785.jpeg?auto=compress&cs=tinysrgb&w=1600",
     heroVideo:
-      "https://videos.pexels.com/video-files/3066465/3066465-uhd_3840_2160_24fps.mp4",
+      "https://videos.pexels.com/video-files/3066465/3066465-hd_1366_720_24fps.mp4",
     tagline:
       "Skyline penthouses, Broadway nights, helicopter circuits over Manhattan.",
     intro:
@@ -261,7 +261,7 @@ export const WONDERS: Wonder[] = [
     image:
       "https://images.pexels.com/photos/258117/pexels-photo-258117.jpeg?auto=compress&cs=tinysrgb&w=1200",
     heroVideo:
-      "https://videos.pexels.com/video-files/2932301/2932301-uhd_3840_2160_24fps.mp4",
+      "https://videos.pexels.com/video-files/2932301/2932301-hd_1366_720_24fps.mp4",
     tagline:
       "A week of Mayfair townhouses, canal-side lunches, and museums on Monday mornings.",
     intro:

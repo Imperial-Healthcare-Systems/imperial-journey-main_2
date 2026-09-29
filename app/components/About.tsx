@@ -42,7 +42,7 @@ export default function About() {
       >
         <div className="wrap">
           <div className="grid grid-cols-2 gap-20 items-center max-[880px]:grid-cols-1 max-[880px]:gap-[50px]">
-            <div className="reveal">
+            <div className="reveal-left">
               <div className="eyebrow">Behind Every Journey</div>
               <h2 className="font-serif font-medium mt-4 mb-7">
                 A decade of{" "}
@@ -74,9 +74,11 @@ export default function About() {
               type="button"
               aria-label="Play story film"
               onClick={() => setOpen(true)}
-              className="reveal relative aspect-[4/5] w-full overflow-hidden rounded-md cursor-pointer bg-ink border-0 p-0 group focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-4"
+              className="reveal-right relative aspect-[4/5] w-full overflow-hidden rounded-md cursor-pointer bg-ink border-0 p-0 group focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-4"
             >
-              <LazyVideo src={ABOUT_VIDEO_URL} className="absolute inset-0 w-full h-full object-cover" />
+              <span data-parallax="0.12" className="absolute inset-x-0 -inset-y-[12%] block">
+                <LazyVideo src={ABOUT_VIDEO_URL} className="absolute inset-0 w-full h-full object-cover" />
+              </span>
               <span
                 className="absolute pointer-events-none rounded-sm z-[2]"
                 style={{

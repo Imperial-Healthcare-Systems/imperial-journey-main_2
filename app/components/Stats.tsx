@@ -54,7 +54,7 @@ export default function Stats() {
       style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }}
     >
       <div className="wrap">
-        <div className="grid grid-cols-4 gap-10 text-center max-[720px]:grid-cols-2 max-[720px]:gap-y-[50px]">
+        <div className="reveal-stagger grid grid-cols-4 gap-10 text-center max-[720px]:grid-cols-2 max-[720px]:gap-y-[50px]">
           {STATS.map((s) => (
             <div key={s.label}>
               <div

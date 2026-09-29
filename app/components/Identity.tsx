@@ -2,11 +2,13 @@ import LazyVideo from "./LazyVideo";
 
 export default function Identity() {
   return (
-    <section className="reveal relative py-[160px] text-center text-white overflow-hidden">
-      <LazyVideo
-        src="https://videos.pexels.com/video-files/1409899/1409899-hd_1920_1080_25fps.mp4"
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 min-w-full min-h-full object-cover z-0"
-      />
+    <section className="relative py-[160px] text-center text-white overflow-hidden">
+      <div data-parallax="0.3" className="absolute inset-x-0 -inset-y-[25%] z-0">
+        <LazyVideo
+          src="https://videos.pexels.com/video-files/1409899/1409899-hd_1920_1080_25fps.mp4"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      </div>
       <div
         className="absolute inset-0 z-[1]"
         style={{
@@ -16,7 +18,7 @@ export default function Identity() {
       />
       <div className="wrap relative z-[2]">
         <h2
-          className="font-serif text-white font-medium max-w-[880px] mx-auto mb-12"
+          className="reveal-zoom font-serif text-white font-medium max-w-[880px] mx-auto mb-12"
           style={{ fontSize: "clamp(2rem, 4vw, 3.4rem)" }}
         >
           We craft journeys that{" "}
@@ -24,7 +26,7 @@ export default function Identity() {
             tell people who you are.
           </span>
         </h2>
-        <div className="grid grid-cols-2 gap-20 max-w-[980px] mx-auto text-left max-[720px]:grid-cols-1 max-[720px]:gap-[30px]">
+        <div className="reveal-stagger grid grid-cols-2 gap-20 max-w-[980px] mx-auto text-left max-[720px]:grid-cols-1 max-[720px]:gap-[30px]">
           <p className="text-white/85 font-light text-base leading-[1.85]">
             Imperial Journeys is a travel brand of Imperial Healthcare Systems
             Pvt Ltd, with operations across India and the United States. We

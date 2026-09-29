@@ -26,7 +26,7 @@ const SCENES: Scene[] = [
     name: "Waterfall · Iceland",
     poster:
       "https://images.pexels.com/photos/210186/pexels-photo-210186.jpeg?auto=compress&cs=tinysrgb&w=2000",
-    src: "https://videos.pexels.com/video-files/1448735/1448735-hd_1920_1080_24fps.mp4",
+    src: "https://videos.pexels.com/video-files/1448735/1448735-hd_1366_720_24fps.mp4",
   },
   {
     name: "Golden Dunes · Sahara",

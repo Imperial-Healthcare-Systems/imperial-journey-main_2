@@ -58,7 +58,7 @@ export default function Features() {
           </p>
         </div>
 
-        <div className="reveal grid grid-cols-3 gap-[50px] max-[880px]:grid-cols-1 max-[880px]:gap-10">
+        <div className="reveal-stagger grid grid-cols-3 gap-[50px] max-[880px]:grid-cols-1 max-[880px]:gap-10">
           {FEATURES.map((f) => (
             <div key={f.title} className="text-center p-5 group">
               <div className="relative w-[100px] h-[100px] mx-auto mb-7 grid place-items-center border border-line rounded-full text-accent transition-all duration-[400ms] group-hover:bg-accent group-hover:text-white group-hover:-translate-y-1.5">

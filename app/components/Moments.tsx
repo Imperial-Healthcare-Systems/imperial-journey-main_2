@@ -6,7 +6,7 @@ type Moment = { src: string; poster: string; cap: string };
 
 const MOMENTS: Moment[] = [
   {
-    src: "https://videos.pexels.com/video-files/1448735/1448735-hd_1920_1080_24fps.mp4",
+    src: "https://videos.pexels.com/video-files/1448735/1448735-hd_1366_720_24fps.mp4",
     poster:
       "https://images.pexels.com/photos/210186/pexels-photo-210186.jpeg?auto=compress&cs=tinysrgb&w=1200",
     cap: "Waterfall · Greenery",
@@ -18,13 +18,13 @@ const MOMENTS: Moment[] = [
     cap: "Mountain Light",
   },
   {
-    src: "https://videos.pexels.com/video-files/4205697/4205697-uhd_3840_2160_25fps.mp4",
+    src: "https://videos.pexels.com/video-files/4205697/4205697-hd_1920_1080_30fps.mp4",
     poster:
       "https://images.pexels.com/photos/1287460/pexels-photo-1287460.jpeg?auto=compress&cs=tinysrgb&w=1200",
     cap: "Infinity Pool",
   },
   {
-    src: "https://videos.pexels.com/video-files/3018669/3018669-uhd_3840_2160_24fps.mp4",
+    src: "https://videos.pexels.com/video-files/3018669/3018669-hd_1920_1080_24fps.mp4",
     poster:
       "https://images.pexels.com/photos/1761279/pexels-photo-1761279.jpeg?auto=compress&cs=tinysrgb&w=1200",
     cap: "Boat at Sunrise",
@@ -108,7 +108,7 @@ export default function Moments() {
 
       <div
         ref={stripRef}
-        className="moments-strip flex gap-4 px-8 overflow-x-auto"
+        className="reveal-stagger moments-strip flex gap-4 px-8 overflow-x-auto"
         style={{
           scrollSnapType: "x mandatory",
           WebkitOverflowScrolling: "touch",
