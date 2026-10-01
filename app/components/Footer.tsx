@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { LEGAL_PAGES, type LegalKey } from "../data/legal";
 import { SOCIAL_LINKS } from "../data/social";
+import LazyVideo from "./LazyVideo";
 
 const TRIGGERS: { key: LegalKey; label: string }[] = [
   { key: "privacy", label: "Privacy Policy" },
@@ -33,8 +34,18 @@ export default function Footer() {
 
   return (
     <>
-      <footer className="bg-ink text-white/65 pt-[70px] pb-7 text-center">
-        <div className="wrap">
+      <footer className="relative overflow-hidden bg-ink text-white/80 pt-[70px] pb-7 text-center min-h-[490px] max-[700px]:min-h-[530px] flex flex-col justify-end">
+        {/* the lion film plays behind the footer */}
+        <LazyVideo
+          src="/footer/lion-film.mp4"
+          portraitSrc="/footer/lion-film-mobile.mp4"
+          poster="/footer/lion-film-poster.jpg"
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+        />
+        <div
+          className="wrap relative z-[1] w-full"
+          style={{ textShadow: "0 1px 3px rgba(0,0,0,0.85), 0 0 14px rgba(0,0,0,0.55)" }}
+        >
           <div className="inline-flex items-center gap-4 mb-10">
             <Image
               src="/Imperial%20tech%20logo%20bbc.png"

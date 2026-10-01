@@ -6,7 +6,18 @@ import { useEffect, useRef } from "react";
  * Muted looping background video that downloads nothing until it is about to
  * scroll into view, and pauses again when it leaves.
  */
-export default function LazyVideo({ src, className }: { src: string; className?: string }) {
+export default function LazyVideo({
+  src,
+  portraitSrc,
+  poster,
+  className,
+}: {
+  src: string;
+  /** alternative cut used when the element is closer to square/portrait than to wide */
+  portraitSrc?: string;
+  poster?: string;
+  className?: string;
+}) {
   const ref = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -14,7 +25,7 @@ export default function LazyVideo({ src, className }: { src: string; className?:
     const io = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          if (!v.src) v.src = src;
+          if (!v.src) v.src = portraitSrc && v.clientWidth < v.clientHeight * 1.6 ? portraitSrc : src;
           v.play().catch(() => {});
         } else if (v.src) {
           v.pause();
@@ -24,7 +35,7 @@ export default function LazyVideo({ src, className }: { src: string; className?:
     );
     io.observe(v);
     return () => io.disconnect();
-  }, [src]);
+  }, [src, portraitSrc]);
 
   return (
     <video
@@ -33,6 +44,7 @@ export default function LazyVideo({ src, className }: { src: string; className?:
       loop
       playsInline
       preload="none"
+      poster={poster}
       disablePictureInPicture
       disableRemotePlayback
       controlsList="nodownload nofullscreen noremoteplayback"
