@@ -73,7 +73,7 @@ export const WONDERS: Wonder[] = [
     image:
       "https://images.pexels.com/photos/1320684/pexels-photo-1320684.jpeg?auto=compress&cs=tinysrgb&w=1200",
     heroVideo:
-      "https://videos.pexels.com/video-files/3214448/3214448-uhd_3840_2160_25fps.mp4",
+      "https://videos.pexels.com/video-files/3214448/3214448-hd_1920_1080_25fps.mp4",
     tagline: "River boats, jungle canopies, and silences that change you.",
     intro:
       "Two weeks aboard the Aria Amazon, a 16-suite river yacht. Skiff trips at dawn, naturalist talks at dusk. The Amazon is the kind of trip you do not describe afterward — you just become a slightly different person.",
@@ -120,7 +120,7 @@ export const WONDERS: Wonder[] = [
     image:
       "https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg?auto=compress&cs=tinysrgb&w=1200",
     heroVideo:
-      "https://videos.pexels.com/video-files/3196219/3196219-uhd_3840_2160_25fps.mp4",
+      "https://videos.pexels.com/video-files/3196219/3196219-hd_1920_1080_25fps.mp4",
     tagline: "A culinary tour curated by a chef, not a concierge.",
     intro:
       "Ten days, four cities, every dinner with the chef in the kitchen. From a robatayaki master in Kyoto to a Basque asador in San Sebastián, you will eat where the chefs eat on their nights off.",
@@ -143,7 +143,7 @@ export const WONDERS: Wonder[] = [
     image:
       "https://images.pexels.com/photos/3889855/pexels-photo-3889855.jpeg?auto=compress&cs=tinysrgb&w=1200",
     heroVideo:
-      "https://videos.pexels.com/video-files/8397876/8397876-uhd_2560_1440_25fps.mp4",
+      "https://videos.pexels.com/video-files/8397876/8397876-hd_1920_1080_25fps.mp4",
     tagline:
       "A camel walk across the dunes, a Bedouin camp under more stars than you have ever seen.",
     intro:
@@ -167,7 +167,7 @@ export const WONDERS: Wonder[] = [
     image:
       "https://images.pexels.com/photos/2440024/pexels-photo-2440024.jpeg?auto=compress&cs=tinysrgb&w=1200",
     heroVideo:
-      "https://videos.pexels.com/video-files/2786062/2786062-uhd_3840_2160_30fps.mp4",
+      "https://videos.pexels.com/video-files/2063228/2063228-hd_1920_1080_24fps.mp4",
     tagline:
       "Heritage houseboats on Dal Lake. Wood-fire stoves. The Himalayas at your window.",
     intro:
@@ -191,7 +191,7 @@ export const WONDERS: Wonder[] = [
     image:
       "https://images.pexels.com/photos/1368382/pexels-photo-1368382.jpeg?auto=compress&cs=tinysrgb&w=1200",
     heroVideo:
-      "https://videos.pexels.com/video-files/4115076/4115076-uhd_2732_1440_25fps.mp4",
+      "https://videos.pexels.com/video-files/4154532/4154532-hd_1920_1080_24fps.mp4",
     tagline: "A starlit weekend nobody can interrupt.",
     intro:
       "Three nights at a remote luxury wilderness camp — Spiti, the Aravallis, or a private property in Madhya Pradesh. No phone signal. A private chef, a guide who knows the night sky, and your own astronomer-led stargazing session on night two.",
@@ -214,7 +214,7 @@ export const WONDERS: Wonder[] = [
     image:
       "https://images.pexels.com/photos/1497582/pexels-photo-1497582.jpeg?auto=compress&cs=tinysrgb&w=1200",
     heroVideo:
-      "https://videos.pexels.com/video-files/3214450/3214450-uhd_3840_2160_25fps.mp4",
+      "https://videos.pexels.com/video-files/3214450/3214450-hd_1920_1080_25fps.mp4",
     tagline: "Class IV rapids by day, riverside camps by night.",
     intro:
       "A six-day adventure for travellers who think a holiday should leave a few bruises. Rishikesh-to-Shivpuri on the Ganges, with two ex-army-captain river guides and a kitchen-team that materialises a multi-course dinner at every campsite.",
@@ -285,7 +285,7 @@ export const WONDERS: Wonder[] = [
     image:
       "https://images.pexels.com/photos/3601425/pexels-photo-3601425.jpeg?auto=compress&cs=tinysrgb&w=1200",
     heroVideo:
-      "https://videos.pexels.com/video-files/4666752/4666752-uhd_3840_2160_25fps.mp4",
+      "https://videos.pexels.com/video-files/9868837/9868837-hd_1920_1080_30fps.mp4",
     tagline: "Nomad ger camps, horseback days, the emptiest sky on Earth.",
     intro:
       "Ten days that begin in Ulaanbaatar and end in the Gobi. You will stay in luxury ger camps run by nomadic families, ride small fierce Mongolian horses across the steppe, and witness the eagle hunters of Bayan-Ölgii at the western edge.",

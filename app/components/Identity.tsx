@@ -75,7 +75,11 @@ export default function Identity() {
         const fw = fh * (9 / 16);
         const fx = (W - fw) / 2;
         const fyFar = py + ph - fh * 0.93; // paws on the floor
-        const fyNear = OUT + H * 0.62 - fh * 0.42; // face in the middle of the section
+        // at his closest the top of his mane breaks out above the section by as much room as
+        // there is on screen between the fixed header and the section's top edge
+        const room = section.getBoundingClientRect().top - 80;
+        const rise = Math.max(30, Math.min(200, room * 0.9));
+        const fyNear = Math.max(OUT + H * 0.62 - fh * 0.42, OUT - rise - fh * 0.16);
         const fy = fyFar + (fyNear - fyFar) * near;
         const fade = smooth(t / 0.5) * (1 - smooth((t - (D - 0.6)) / 0.55));
         const rect: [number, number, number, number] = [px, py, pw, ph];
