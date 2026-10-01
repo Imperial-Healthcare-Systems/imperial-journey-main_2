@@ -79,8 +79,9 @@ function ParrotFilm({ onDone }: { onDone: () => void }) {
     const lite = window.innerWidth < 900;
     if (lite) {
       // phones: the film fills the first screen of the (tall) section
-      video.style.bottom = "auto";
-      video.style.height = `${Math.min(section.clientHeight, Math.round(window.innerHeight * 0.85))}px`;
+      // phones: the whole film layer (vignette, skip button, effects) covers just the first screen
+      layer.style.bottom = "auto";
+      layer.style.height = `${Math.min(section.clientHeight, Math.round(window.innerHeight * 0.85))}px`;
     }
     section.setAttribute("data-parrot", "cover");
 
@@ -106,7 +107,7 @@ function ParrotFilm({ onDone }: { onDone: () => void }) {
       const dt = Math.min(0.05, (now - (last || now)) / 1000);
       last = now;
       const W = section.clientWidth,
-        H = section.clientHeight;
+        H = layer.clientHeight;
       const FH = video.clientHeight || H; // where the film is shown
       const t = video.currentTime;
 

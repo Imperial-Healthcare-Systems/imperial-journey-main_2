@@ -60,7 +60,7 @@ export default function Stats() {
               <div
                 className="font-serif font-medium text-accent-soft mb-3"
                 style={{
-                  fontSize: "4rem",
+                  fontSize: "clamp(2.6rem, 9vw, 4rem)",
                   lineHeight: 1,
                   letterSpacing: "-0.02em",
                 }}

@@ -50,7 +50,7 @@ export default function Wonders() {
 
           <div
             className="reveal-stagger grid gap-4 grid-cols-4 max-[980px]:grid-cols-2 max-[540px]:grid-cols-1"
-            style={{ gridAutoRows: "220px" }}
+            style={{ gridAutoRows: "220px", gridAutoFlow: "row dense" }}
           >
             {WONDERS.map((w) => {
               const layoutCls = w.layout ? w.layout : "";

@@ -279,7 +279,7 @@ export const WONDERS: Wonder[] = [
   },
   {
     id: "mongolia",
-    layout: "",
+    layout: "wide",
     label: "Mongolia",
     title: "The Steppe Ride",
     image:
