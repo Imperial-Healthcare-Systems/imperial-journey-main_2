@@ -1,11 +1,13 @@
 import ContactForm from "./ContactForm";
+import ParrotReveal from "./ParrotReveal";
 
 export default function Contact() {
   return (
     <section
       id="contact-section"
-      className="py-[130px] bg-offwhite max-[600px]:py-[90px]"
+      className="relative overflow-hidden py-[130px] bg-offwhite max-[600px]:py-[90px]"
     >
+      <ParrotReveal />
       <div className="wrap">
         <div className="grid gap-20 max-[880px]:grid-cols-1 max-[880px]:gap-[50px]" style={{ gridTemplateColumns: "1fr 1.2fr" }}>
           <div className="reveal-left">

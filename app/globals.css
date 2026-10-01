@@ -179,3 +179,11 @@ html[data-intro="playing"] body > :not(#intro-section) {
 body > * {
   transition: opacity 1.6s ease;
 }
+
+/* ---------- Contact: hidden under the parrot film until the thrown page reaches you ---------- */
+#contact-section[data-parrot] .wrap {
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+#contact-section[data-parrot="cover"] .wrap { opacity: 0; transform: scale(1.04); }
+#contact-section[data-parrot] .reveal-left,
+#contact-section[data-parrot] .reveal-right { opacity: 1; transform: none; }

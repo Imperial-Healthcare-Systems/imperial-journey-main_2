@@ -21,6 +21,7 @@ export default function Identity() {
   const frontRef = useRef<HTMLCanvasElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const glowRef = useRef<HTMLDivElement>(null);
+  const vignetteRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -43,6 +44,7 @@ export default function Identity() {
       burst = false;
     const text = textRef.current!;
     const glow = glowRef.current!;
+    const vignette = vignetteRef.current!;
 
     let raf = 0,
       running = false;
@@ -96,16 +98,18 @@ export default function Identity() {
         // firelight behind him grows as he approaches
         glow.style.opacity = ((0.25 + 0.75 * near) * fade).toFixed(3);
         glow.style.transform = `translateX(-50%) scale(${(0.8 + 0.5 * near).toFixed(3)})`;
+        // the edges of the section fall into shadow as he comes close: the eye stays on him
+        vignette.style.opacity = (near * 0.85 * fade).toFixed(3);
 
         if (t < 1) burst = false;
         if (!reduced && !burst && out > 0.05) {
           burst = true;
           burstAt = now;
-          for (let i = 0; i < 90; i++) {
+          for (let i = 0; i < 24; i++) {
             sparks.push({
               a: Math.random() * Math.PI * 2,
               r: 30 + Math.random() * 40,
-              v: 250 + Math.random() * 450,
+              v: 90 + Math.random() * 160,
               s: 0.8 + Math.random() * 1.6,
               seed: Math.random() * 9,
             });
@@ -125,33 +129,17 @@ export default function Identity() {
         fctx.clearRect(0, 0, front.width, front.height);
         fctx.setTransform(sx, 0, 0, sx, 0, 0);
 
-        // flash and an expanding ring of light as he breaks out
-        if (burst && since < 1.4) {
+        // a soft swell of warm light as he comes out (no hard flash)
+        if (burst && since < 2.2) {
           const cx = W / 2,
-            cy = OUT + H * 0.48;
+            cy = OUT + H * 0.5;
+          const f = Math.sin(Math.PI * Math.min(1, since / 2.2)) * fade;
           fctx.globalCompositeOperation = "lighter";
-          const f = Math.exp(-since / 0.18);
-          const fl = fctx.createRadialGradient(cx, cy, 0, cx, cy, H * 0.9);
-          fl.addColorStop(0, `rgba(255,220,160,${0.45 * f})`);
-          fl.addColorStop(0.4, `rgba(255,140,40,${0.25 * f})`);
+          const fl = fctx.createRadialGradient(cx, cy, 0, cx, cy, H * 0.85);
+          fl.addColorStop(0, `rgba(255,170,90,${0.14 * f})`);
           fl.addColorStop(1, "rgba(255,90,10,0)");
           fctx.fillStyle = fl;
           fctx.fillRect(0, OUT, W, H);
-          const k = since / 1.4;
-          const R = 60 + k * W * 0.55;
-          fctx.lineWidth = 2 + 10 * (1 - k);
-          fctx.shadowColor = "rgba(255,150,50,0.9)";
-          fctx.shadowBlur = 24;
-          fctx.strokeStyle = `rgba(255,190,110,${0.35 * (1 - k) * (1 - k)})`;
-          fctx.save();
-          fctx.beginPath();
-          fctx.rect(0, OUT, W, H);
-          fctx.clip();
-          fctx.beginPath();
-          fctx.ellipse(cx, cy, R, R * 0.55, 0, 0, Math.PI * 2);
-          fctx.stroke();
-          fctx.shadowBlur = 0;
-          fctx.restore();
           fctx.globalCompositeOperation = "source-over";
         }
 
@@ -159,7 +147,7 @@ export default function Identity() {
         if (!reduced) {
           const cx = W / 2,
             cy = OUT + H * 0.55;
-          let n = (6 + 50 * near) * fade * dt;
+          let n = (6 + 22 * near) * fade * dt;
           while (n > 0) {
             if (Math.random() < n) {
               sparks.push({
@@ -259,6 +247,17 @@ export default function Identity() {
           }}
         />
       </div>
+      {/* depth: the section's edges darken while he is close */}
+      <div
+        ref={vignetteRef}
+        aria-hidden="true"
+        className="absolute inset-0 pointer-events-none z-[1]"
+        style={{
+          background:
+            "radial-gradient(ellipse 45% 70% at 50% 55%, transparent 40%, rgba(0,0,0,0.75) 100%)",
+          opacity: 0,
+        }}
+      />
       <canvas
         ref={portalRef}
         aria-hidden="true"
