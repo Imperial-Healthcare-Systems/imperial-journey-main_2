@@ -48,31 +48,58 @@ function Counter({ target }: { target: number }) {
 }
 
 export default function Stats() {
+  const sceneRef = useRef<HTMLDivElement>(null);
+
+  // the 3D globe behind the numbers (three.js, loaded only in the browser)
+  useEffect(() => {
+    const el = sceneRef.current;
+    if (!el) return;
+    let scene: { dispose: () => void } | null = null;
+    let cancelled = false;
+    const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const lite = window.innerWidth < 900;
+    import("./stats/statsGlobe").then(({ createStatsGlobe }) => {
+      if (!cancelled) scene = createStatsGlobe(el, { lite, still });
+    });
+    return () => {
+      cancelled = true;
+      scene?.dispose();
+    };
+  }, []);
+
   return (
     <section
-      className="bg-ink py-20"
+      className="relative overflow-hidden bg-ink py-20"
       style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }}
     >
-      <div className="wrap">
+      {/* far layer: the globe, contours, routes and dust */}
+      <div
+        ref={sceneRef}
+        aria-hidden="true"
+        className="absolute inset-0 pointer-events-none"
+      />
+      <div className="wrap relative">
         <div className="reveal-stagger grid grid-cols-4 gap-10 text-center max-[720px]:grid-cols-2 max-[720px]:gap-y-[50px]">
           {STATS.map((s) => (
-            <div key={s.label}>
-              <div
-                className="font-serif font-medium text-accent-soft mb-3"
-                style={{
-                  fontSize: "clamp(2.6rem, 9vw, 4rem)",
-                  lineHeight: 1,
-                  letterSpacing: "-0.02em",
-                }}
-              >
-                <Counter target={s.target} />
-                <span className="text-accent italic">{s.suffix}</span>
-              </div>
-              <div
-                className="text-[11px] uppercase text-white/60 font-medium"
-                style={{ letterSpacing: "0.3em" }}
-              >
-                {s.label}
+            <div key={s.label} className="[perspective:800px]">
+              <div className="stat-3d">
+                <div
+                  className="font-serif font-medium text-accent-soft mb-3"
+                  style={{
+                    fontSize: "clamp(2.6rem, 9vw, 4rem)",
+                    lineHeight: 1,
+                    letterSpacing: "-0.02em",
+                  }}
+                >
+                  <Counter target={s.target} />
+                  <span className="text-accent italic">{s.suffix}</span>
+                </div>
+                <div
+                  className="text-[11px] uppercase text-white/60 font-medium"
+                  style={{ letterSpacing: "0.3em" }}
+                >
+                  {s.label}
+                </div>
               </div>
             </div>
           ))}
